@@ -143,6 +143,10 @@ Then /^the result should be "([^"]*)"$/ do |string|
   @result.should == string
 end
 
+Then /^the result should be (\d+\.\d+)$/ do |float|
+  @result.should == float.to_f
+end
+
 
 
 
