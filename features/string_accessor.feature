@@ -3,7 +3,7 @@ Feature: Getting strings from the document
   As a traverser
   I want to access nodes using the string method and an xpath
   
-  Scenario: getting the text of a single node
+  Scenario: getting the string of a single node
     When I parse the XML:
       """
         <root>
