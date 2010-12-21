@@ -16,11 +16,11 @@ Feature: Getting nodes from the document
           </rooms>
         </root>
       """
-    And I get the xpath "//rooms"
-    Then the node should be a "Dozuki::XML::Node"
-    Then the node should have 2 elements
+    And I call "get('//rooms')" on the document
+    Then the result should be a "Dozuki::XML::Node"
+    And the result should have 2 elements
 
-  Scenario: getting a single node
+  Scenario: getting a single node but accessing it with a block
     When I parse the XML:
       """
         <root>
@@ -33,11 +33,11 @@ Feature: Getting nodes from the document
           </rooms>
         </root>
       """
-    And I get the xpath "//rooms" with a block
-    Then the node should be a "Dozuki::XML::Node"
-    Then the node should have 2 elements
+    And I call "get('//rooms')" on the document with a block
+    Then the result should be a "Dozuki::XML::Node"
+    And the result should have 2 elements
     
-  Scenario: it gets the first of multiple nodes
+  Scenario: getting the first of multiple nodes
     When I parse the XML:
       """
         <root>
@@ -50,8 +50,8 @@ Feature: Getting nodes from the document
           </rooms>
         </root>
       """
-    And I get the xpath "//rooms/room"
-    Then the node should have the text "SINGLE"
+    And I call "get('//rooms/room')" on the document with a block
+    Then the result should have the text "SINGLE"
     
   Scenario: getting a non-existent node
     When I parse the XML:
@@ -62,6 +62,7 @@ Feature: Getting nodes from the document
           <number_of_rooms>2</number_of_rooms>
         </root>
       """
-    Then getting the xpath "//something/missing" should raise a "NotFound" error
+    Then calling "get('//something/missing')" on the document should raise a "NotFound" error
     And the error should have the xpath "//something/missing"
+    And the error should have a stored node
     And the error should have a stored node

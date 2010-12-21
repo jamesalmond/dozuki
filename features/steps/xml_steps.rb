@@ -122,6 +122,8 @@ Then /^the xpath "([^"]*)" should not exist$/ do |xpath|
 end
 
 
+## new style
+
 Then /^calling "([^"]*)" on the document should raise a "([^"]*)" error$/ do |code, error|
   begin
     @doc.instance_eval(code)
@@ -135,6 +137,11 @@ When /^I call "([^"]*)" on the document$/ do |code|
   @result = @doc.instance_eval(code)
 end
 
+When /^I call "([^"]*)" on the document with a block$/ do |code|
+  @result = @doc.instance_eval(code + "{|res| res}") # returns the variable passed to the block
+end
+
+
 Then /^the result should be (\d+)$/ do |int|
   @result.should == int.to_i
 end
@@ -147,6 +154,16 @@ Then /^the result should be (\d+\.\d+)$/ do |float|
   @result.should == float.to_f
 end
 
+Then /^the result should be a "([^"]*)"$/ do |type|
+  @result.class.to_s.should == type
+end
 
+Then /^the result should have (\d+) elements$/ do |count|
+  @result.children.select{|e| e.is_a?(Nokogiri::XML::Element)}.count.should == count.to_i
+end
+
+Then /^the result should have the (.*) "([^"]*)"$/ do |method, value|
+  @result.send(method).should == value
+end
 
 
