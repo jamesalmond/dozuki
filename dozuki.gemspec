@@ -18,10 +18,12 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {spec,features,autotest}/* .autotest`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+  
   s.add_dependency("nokogiri")
-  s.add_development_depenency("rspec")
-  s.add_development_depenency("cucumber")
-  s.add_development_depenency("ruby-debug19")
-  s.add_development_depenency("autotest")
+  
+  s.add_development_dependency("rspec")
+  s.add_development_dependency("cucumber")
+  s.add_development_dependency("ruby-debug19")
+  s.add_development_dependency("autotest")
   
 end

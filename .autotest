@@ -1,0 +1,13 @@
+Autotest.add_hook :initialize do |at|
+  root = File.dirname(__FILE__)
+  at.add_mapping(%r%^lib/(.*)\.rb$%) { |_, m|
+    ["spec/#{m[1]}_spec.rb"]
+  }
+  at.add_mapping(%r%^spec/.*_spec\.rb$%) { |filename|
+    filename
+  }
+  at.add_mapping(%r%^spec/support/.*\.rb$%) { |_|
+    Dir[File.join(root, 'spec/**/*_spec.rb')]
+  }
+  nil
+end
