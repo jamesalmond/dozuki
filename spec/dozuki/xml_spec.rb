@@ -6,10 +6,10 @@ module Dozuki
     describe "parse" do
       let(:string)        {"<lall><some xml='true' /></lall>"}
       let(:nokogiri_node) {mock "nokogiri node"}
-      let(:gsi_xml_node)  {mock "gsi xml node"}
+      let(:dozuki_xml_node)  {mock "dozuki xml node"}
       before(:each) do
         Nokogiri::XML.stub(:parse).and_return(nokogiri_node)
-        XML::Node.stub(:new).and_return(gsi_xml_node)
+        XML::Node.stub(:new).and_return(dozuki_xml_node)
       end
       subject{XML.parse(string)}
       it "should parse the xml using nokogiri" do
@@ -21,7 +21,7 @@ module Dozuki
         subject
       end
       it "should return the new node" do
-        subject.should == gsi_xml_node
+        subject.should == dozuki_xml_node
       end
     end
     
