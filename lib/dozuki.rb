@@ -1,3 +1,3 @@
-module Dozuki
-  # Your code goes here...
-end
+require 'nokogiri'
+
+require 'dozuki/xml'
