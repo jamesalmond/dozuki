@@ -122,3 +122,27 @@ Then /^the xpath "([^"]*)" should not exist$/ do |xpath|
 end
 
 
+Then /^calling "([^"]*)" on the document should raise a "([^"]*)" error$/ do |code, error|
+  begin
+    @doc.instance_eval(code)
+    fail "Expected error #{error}, nothing raised"
+  rescue Dozuki::XML.const_get(error) => e
+    @error = e
+  end
+end
+
+When /^I call "([^"]*)" on the document$/ do |code|
+  @result = @doc.instance_eval(code)
+end
+
+Then /^the result should be (\d+)$/ do |int|
+  @result.should == int.to_i
+end
+
+Then /^the result should be "([^"]*)"$/ do |string|
+  @result.should == string
+end
+
+
+
+
