@@ -15,19 +15,19 @@ Feature: Getting floats from the document
     And I call "float('/root/cost')" on the document
     Then the result should be 20.32
     
-    Scenario: getting the text of a single node with whitespace
-      When I parse the XML:
-        """
-          <root>
-            <hotel>St. George's</hotel>
-            <cost>
-              20.32
-            </cost>
-            <number_of_rooms>2</number_of_rooms>
-          </root>
-        """
-      And I call "float('/root/cost')" on the document
-      Then the float result should be 20.32
+  Scenario: getting the text of a single node with whitespace
+    When I parse the XML:
+      """
+        <root>
+          <hotel>St. George's</hotel>
+          <cost>
+            20.32
+          </cost>
+          <number_of_rooms>2</number_of_rooms>
+        </root>
+      """
+    And I call "float('/root/cost')" on the document
+    Then the float result should be 20.32
     
   Scenario: getting a non-existent node
     When I parse the XML:
