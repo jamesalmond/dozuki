@@ -7,35 +7,33 @@ Feature: Getting strings from the document
     When I parse the XML:
       """
         <root>
-          <hotel>St George's</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_cost>20.32</average_cost>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
-    And I call "string('/root/hotel')" on the document
-    Then the result should be "St George's"
+    And I call "string('/root/name')" on the document
+    Then the result should be "St George's Arms"
     
   Scenario: getting the text of a single node with whitespace
     When I parse the XML:
       """
         <root>
-          <hotel>
-            St George's
-          </hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_cost>20.32</average_cost>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
     And I call "string('/root/hotel')" on the document
-    Then the result should be "St George's"
+    Then the result should be "St George's Arms"
     
   Scenario: getting a non-existent node
     When I parse the XML:
       """
         <root>
-          <hotel>St George's</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_cost>20.32</average_cost>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
     Then calling "string('//something/missing')" on the document should raise a "NotFound" error
