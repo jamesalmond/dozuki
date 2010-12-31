@@ -52,7 +52,7 @@ Dozuki also provides a slightly more succinct way to 'each' an xpath:
     # do something
   end
 
-=== Iterating through node text
+=== Iterating through node text and parsing
 
 There are also simple ways to extract formatted text of a series of nodes with an each
 
@@ -70,7 +70,11 @@ There are also simple ways to extract formatted text of a series of nodes with a
 
 == Playing nicely with Nokogiri
 
-Dozuki will proxy any calls not recognised onto the underlying Nokogiri structure, including responds to, allowing you to treat it like any other Nokogiri document.
+Dozuki will proxy any calls not recognised onto the underlying Nokogiri structure, including responds_to?, allowing you to treat it like any other Nokogiri document.
+
+== More documentation
+
+More features are described in the.. {features}[https://github.com/jamesalmond/dozuki/tree/master/features]
 
 == Contributing to Dozuki
  
