@@ -12,6 +12,10 @@ Dozuki removes the repetitive tasks from parsing XML documents such as:
 * iterating through nodes
 * iterating nodes and extracting ints, floats and strings etc.
 
+== How do I use it?
+
+    Some code
+
 == Contributing to Dozuki
  
 * Fork the project.
