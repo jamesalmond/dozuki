@@ -41,3 +41,4 @@ Feature: Getting floats from the document
     Then calling "float('//something/missing')" on the document should raise a "NotFound" error
     And the error should have the xpath "//something/missing"
     And the error should have a stored node
+    
