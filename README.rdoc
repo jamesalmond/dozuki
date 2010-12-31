@@ -4,7 +4,7 @@ A Nokogiri wrapper that simplifies commonly occurring tasks.
 
 == What does it do?
 
-Dozuki removes the repetitive tasks from parsing XML documents such as:
+Dozuki removes the repetitive tasks from parsing XML documents with XPaths such as:
 
 * extracting ints, floats, strings etc.
 * accessing single nodes
