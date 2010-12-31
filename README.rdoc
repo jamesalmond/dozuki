@@ -12,6 +12,10 @@ Dozuki removes the repetitive tasks from parsing XML documents such as:
 * iterating through nodes
 * iterating nodes and extracting ints, floats and strings etc.
 
+It's mainly sugar for reducing the amount of chaining on calls like:
+
+  doc.xpath('/my/xpath').first.to_i
+
 == How do I use it?
 
 Parsing XML (currently only supports strings):
