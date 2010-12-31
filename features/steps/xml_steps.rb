@@ -158,6 +158,14 @@ Then /^the result should be a "([^"]*)"$/ do |type|
   @result.class.to_s.should == type
 end
 
+Then /^the result should be true$/ do
+  @result.should be_true
+end
+
+Then /^the result should be false$/ do
+  @result.should be_false
+end
+
 Then /^the result should have (\d+) elements$/ do |count|
   @result.children.select{|e| e.is_a?(Nokogiri::XML::Element)}.count.should == count.to_i
 end

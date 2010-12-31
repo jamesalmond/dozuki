@@ -13,7 +13,8 @@ Feature: Exists accessor
           <number_of_rooms>2</number_of_rooms>
         </root>
       """
-    Then the xpath "/root/number_of_rooms" should exist
+    And I call "exists?('/root/number_of_rooms')" on the document
+    Then the result should be true
     
   Scenario: the node doesn't exist
     When I parse the XML:
@@ -24,4 +25,5 @@ Feature: Exists accessor
             <number_of_rooms>2</number_of_rooms>
           </root>
         """
-      Then the xpath "/root/number_of_drug_barons" should not exist
+      And I call "exists?('/root/quantity')" on the document
+      Then the result should be false
