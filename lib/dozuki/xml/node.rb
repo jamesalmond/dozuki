@@ -23,9 +23,11 @@ module Dozuki
       def string(xpath)
         Parser.to_string(get_first_node(xpath))
       end
+      
       def int(xpath)
         Parser.to_int(get_first_node(xpath))
       end
+      
       def float(xpath)
         Parser.to_float(get_first_node(xpath))
       end
@@ -46,6 +48,7 @@ module Dozuki
           raise NotFound.new("Node not found", :xpath => xpath, :node => nokogiri_node) if node.empty?
           node.first
         end
+        
     end
   end
 end
