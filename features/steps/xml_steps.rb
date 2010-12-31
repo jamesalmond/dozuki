@@ -2,61 +2,6 @@ When /^I parse the XML:$/ do |string|
   @doc = Dozuki::XML.parse(string)
 end
 
-When /^I get the xpath "([^"]*)"$/ do |xpath|
-  @node = @doc.get(xpath)
-end
-
-When /^I get the xpath "([^"]*)" with a block$/ do |xpath|
-  @doc.get(xpath) do |node|
-    @node = node
-  end
-end
-
-Then /^the node should be a "([^"]*)"$/ do |type|
-  @node.class.to_s.should == type
-end
-
-Then /^the node should have (\d+) elements$/ do |count|
-  @node.children.select{|e| e.is_a?(Nokogiri::XML::Element)}.count.should == count.to_i
-end
-
-Then /^the node should have the text "([^"]*)"$/ do |text|
-  @node.text.should == text
-end
-
-Then /^the node should be empty$/ do
-  @node.should be_nil
-end
-
-Then /^(get|string|int|float)t?ing the xpath "([^"]*)" should raise a "([^"]*)" error$/ do |method,xpath, error|
-  begin
-    @doc.send(method,xpath)
-    fail
-  rescue Dozuki::XML.const_get(error) => e
-    @error = e
-  end
-end
-
-When /^I string the xpath "([^"]*)"$/ do |xpath|
-  @result = @doc.string(xpath)
-end
-
-Then /^the string result should be "([^"]*)"$/ do |string|
-  @result.should == string
-end
-
-When /^I int the xpath "([^"]*)"$/ do |xpath|
-  @result = @doc.int(xpath)
-end
-
-Then /^the int result should be (\d+)$/ do |int|
-  @result.should == int.to_i
-end
-
-When /^I float the xpath "([^"]*)"$/ do |xpath|
-  @result = @doc.float(xpath)
-end
-
 Then /^the float result should be (\d+\.\d+)$/ do |float|
   @result.should == float.to_f
 end
@@ -113,15 +58,6 @@ Then /^the error should have a stored node$/ do
   @error.node.should_not be_nil
 end
 
-Then /^the xpath "([^"]*)" should exist$/ do |xpath|
-  @doc.exists?(xpath).should be_true
-end
-
-Then /^the xpath "([^"]*)" should not exist$/ do |xpath|
-  @doc.exists?(xpath).should be_false
-end
-
-
 ## new style
 
 Then /^calling "([^"]*)" on the document should raise a "([^"]*)" error$/ do |code, error|
@@ -141,7 +77,6 @@ When /^I call "([^"]*)" on the document with a block$/ do |code|
   @result = @doc.instance_eval(code + "{|res| res}") # returns the variable passed to the block
 end
 
-
 Then /^the result should be (\d+)$/ do |int|
   @result.should == int.to_i
 end
@@ -154,7 +89,7 @@ Then /^the result should be (\d+\.\d+)$/ do |float|
   @result.should == float.to_f
 end
 
-Then /^the result should be a "([^"]*)"$/ do |type|
+Then /^the (?:result|block parameter) should be a "([^"]*)"$/ do |type|
   @result.class.to_s.should == type
 end
 
@@ -166,12 +101,10 @@ Then /^the result should be false$/ do
   @result.should be_false
 end
 
-Then /^the result should have (\d+) elements$/ do |count|
+Then /^the (?:result|parameter) should have (\d+) elements$/ do |count|
   @result.children.select{|e| e.is_a?(Nokogiri::XML::Element)}.count.should == count.to_i
 end
 
 Then /^the result should have the (.*) "([^"]*)"$/ do |method, value|
   @result.send(method).should == value
 end
-
-
