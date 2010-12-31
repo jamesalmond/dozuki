@@ -5,7 +5,7 @@ Feature: Exists accessor
   
   
   Scenario: the node exists
-   When I parse the XML:
+    When I parse the XML:
       """
         <root>
           <hotel>lame</hotel>
@@ -18,12 +18,12 @@ Feature: Exists accessor
     
   Scenario: the node doesn't exist
     When I parse the XML:
-        """
-          <root>
-            <hotel>lame</hotel>
-            <cost>20.00</cost>
-            <number_of_rooms>2</number_of_rooms>
-          </root>
-        """
-      And I call "exists?('/root/quantity')" on the document
-      Then the result should be false
+      """
+        <root>
+          <hotel>lame</hotel>
+          <cost>20.00</cost>
+          <number_of_rooms>2</number_of_rooms>
+        </root>
+      """
+    And I call "exists?('/root/quantity')" on the document
+    Then the result should be false
