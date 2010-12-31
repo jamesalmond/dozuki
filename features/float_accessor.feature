@@ -27,7 +27,7 @@ Feature: Getting floats from the document
         </root>
       """
     And I call "float('/root/average_price')" on the document
-    Then the float result should be 20.32
+    Then the result should be 20.32
     
   Scenario: getting a non-existent node
     When I parse the XML:
