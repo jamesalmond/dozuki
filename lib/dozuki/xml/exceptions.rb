@@ -1,5 +1,6 @@
 module Dozuki
   module XML
+    
     class NotFound < StandardError
       attr_accessor :xpath, :node
       
@@ -8,7 +9,9 @@ module Dozuki
         self.xpath = opts[:xpath]
         self.node = opts[:node]
       end
+      
     end
+    
     class InvalidFormat < StandardError
       attr_accessor :format, :node, :value
       
@@ -17,7 +20,8 @@ module Dozuki
         self.format = opts[:format]
         self.node = opts[:node]
         self.value = opts[:value]
-      end
+      end  
     end
+    
   end
 end
