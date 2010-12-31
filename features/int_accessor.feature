@@ -7,35 +7,35 @@ Feature: Getting integers from the document
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
-    And I call "int('/root/number_of_rooms')" on the document
+    And I call "int('/root/number_of_beers')" on the document
     Then the result should be 2
     
   Scenario: getting the int of a single node with whitespace
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>
             2
-          </number_of_rooms>
+          </number_of_beers>
         </root>
       """
-    And I call "int('/root/number_of_rooms')" on the document
+    And I call "int('/root/number_of_beers')" on the document
     Then the result should be 2
     
   Scenario: getting the int of a non-existent node
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
     Then calling "int('//something/missing')" on the document should raise a "NotFound" error

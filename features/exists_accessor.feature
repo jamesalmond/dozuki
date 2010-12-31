@@ -8,22 +8,22 @@ Feature: Exists accessor
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
-    And I call "exists?('/root/number_of_rooms')" on the document
+    And I call "exists?('/root/number_of_beers')" on the document
     Then the result should be true
     
   Scenario: the node doesn't exist
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
-    And I call "exists?('/root/quantity')" on the document
+    And I call "exists?('/root/food')" on the document
     Then the result should be false

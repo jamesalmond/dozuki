@@ -7,9 +7,9 @@ Feature: Getting nodes from the document
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
           <rooms>
             <room>SINGLE</room>
             <room>Double</room>
@@ -24,9 +24,9 @@ Feature: Getting nodes from the document
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
           <rooms>
             <room>SINGLE</room>
             <room>Double</room>
@@ -57,9 +57,9 @@ Feature: Getting nodes from the document
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
         </root>
       """
     Then calling "get('//something/missing')" on the document should raise a "NotFound" error
