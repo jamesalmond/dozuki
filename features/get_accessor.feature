@@ -34,8 +34,8 @@ Feature: Getting nodes from the document
         </root>
       """
     And I call "get('//rooms')" on the document with a block
-    Then the result should be a "Dozuki::XML::Node"
-    And the result should have 2 elements
+    Then the block parameter should be a "Dozuki::XML::Node"
+    And the parameter should have 2 elements
     
   Scenario: getting the first of multiple nodes
     When I parse the XML:
@@ -50,7 +50,7 @@ Feature: Getting nodes from the document
           </rooms>
         </root>
       """
-    And I call "get('//rooms/room')" on the document with a block
+    And I call "get('//rooms/room')" on the document
     Then the result should have the text "SINGLE"
     
   Scenario: getting a non-existent node
