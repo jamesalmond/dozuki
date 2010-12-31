@@ -13,7 +13,7 @@ Feature: Getting strings from the document
         </root>
       """
     And I call "string('/root/name')" on the document
-    Then the result should be "St George's Arms"
+    Then the result should be "St. George's Arms"
     
   Scenario: getting the text of a single node with whitespace
     When I parse the XML:
@@ -24,8 +24,8 @@ Feature: Getting strings from the document
           <number_of_beers>2</number_of_beers>
         </root>
       """
-    And I call "string('/root/hotel')" on the document
-    Then the result should be "St George's Arms"
+    And I call "string('/root/name')" on the document
+    Then the result should be "St. George's Arms"
     
   Scenario: getting a non-existent node
     When I parse the XML:
