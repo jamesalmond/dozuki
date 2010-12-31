@@ -7,16 +7,16 @@ Feature: Iterating through nodes
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
           <rooms>
             <room>SINGLE</room>
             <room>Double</room>
           </rooms>
         </root>
       """
-    And I each the xpath "/root/rooms/room"
+    And I call "each('/root/rooms/room')" on the document and collect the results
     Then the results should contain a node with the text "SINGLE"
     And the results should contain a node with the text "Double"
   
@@ -24,49 +24,49 @@ Feature: Iterating through nodes
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
           <rooms>
             <room>SINGLE</room>
             <room>Double</room>
           </rooms>
         </root>
       """
-    And I each the xpath "/root/rooms/room" as a string
-    Then the results should contain the string "SINGLE"
-    And the results should contain the string "Double"
+    And I call "each('/root/rooms/room').as_string" on the document and collect the results
+    Then the results should contain "SINGLE"
+    And the results should contain "Double"
   
   Scenario: using each to traverse a document and getting the integer elements
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
           <rooms>
             <room>5</room>
             <room>7</room>
           </rooms>
         </root>
       """
-    And I each the xpath "/root/rooms/room" as an int
-    Then the results should contain the integer 5
-    And the results should contain the integer 5
+    And I call "each('/root/rooms/room').as_int" on the document and collect the results
+    Then the results should contain 5
+    And the results should contain 5
   
   Scenario: using each to traverse a document and getting the float elements
     When I parse the XML:
       """
         <root>
-          <hotel>lame</hotel>
-          <cost>20.00</cost>
-          <number_of_rooms>2</number_of_rooms>
+          <name>St. George's Arms</name>
+          <average_price>20.32</average_price>
+          <number_of_beers>2</number_of_beers>
           <rooms>
             <room>53.50</room>
             <room>799.78</room>
           </rooms>
         </root>
       """
-    And I each the xpath "/root/rooms/room" as a float
-    Then the results should contain the float 53.50
-    And the results should contain the float 799.78
+    And I call "each('/root/rooms/room').as_float" on the document and collect the results
+    Then the results should contain 53.50
+    And the results should contain 799.78
