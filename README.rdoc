@@ -1,6 +1,16 @@
 = Dozuki
 
-A simpler way to parse documents with Nokogiri.
+A Nokogiri wrapper that simplifies commonly occurring tasks.
+
+== What does it do?
+
+Dozuki removes the repetitive tasks from parsing XML documents such as:
+
+* extracting ints, floats, strings etc.
+* accessing single nodes
+* checking whether an element exists
+* iterating through nodes
+* iterating nodes and extracting ints, floats and strings etc.
 
 == Contributing to Dozuki
  
