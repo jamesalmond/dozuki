@@ -2,6 +2,8 @@
 
 A Nokogiri wrapper that simplifies commonly occurring tasks.
 
+[![Build Status](http://travis-ci.org/JamesAlmond/dozuki.png)](http://travis-ci.org/JamesAlmond/dozuki)
+
 == What does it do?
 
 Dozuki removes the repetitive tasks from parsing XML documents with XPaths such as:
