@@ -10,4 +10,4 @@ else
 fi
 
 bundle install
-bundle exec rake
+rake
