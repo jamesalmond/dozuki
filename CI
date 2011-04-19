@@ -10,5 +10,4 @@ else
 fi
 
 bundle install
-bundle exec rspec spec
-bundle exec cucumber
+bundle exec rake
