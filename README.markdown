@@ -84,7 +84,7 @@ Dozuki will proxy any calls not recognised onto the underlying Nokogiri structur
 
 ## More documentation
 
-More features are described in the.. {features}[https://github.com/jamesalmond/dozuki/tree/master/features]
+More features are described in the.. [features](https://github.com/jamesalmond/dozuki/tree/master/features)
 
 ## Contributing to Dozuki
  
