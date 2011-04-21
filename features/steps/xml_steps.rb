@@ -1,4 +1,4 @@
-When /^I parse the XML:$/ do |string|
+When /^I (?:have )?parsed? the XML:$/ do |string|
   @doc = Dozuki::XML.parse(string)
 end
 
@@ -24,8 +24,17 @@ Then /^calling "([^"]*)" on the document should raise an? "([^"]*)" error$/ do |
 end
 
 When /^I call "([^"]*)" on the document$/ do |code|
-  @result = @doc.instance_eval(code)
+  begin
+    @result = @doc.instance_eval(code)
+  rescue StandardError => e
+    @error = e
+  end
 end
+
+Then /^it should raise an? "([^"]*)" error$/ do |error|
+  @error.should be_a Dozuki::XML.const_get(error)
+end
+
 
 When /^I call "([^"]*)" on the document with a block$/ do |code|
   @result = @doc.instance_eval(code + "{|res| res}") # returns the variable passed to the block
