@@ -3,56 +3,35 @@ Feature: Getting integers from the document
   As a traverser
   I want to access nodes using the int method and an xpath
 
-  Scenario: getting the int of a single node
-    When I parse the XML:
+  Background:
+    Given I have parsed the XML:
       """
         <root>
           <name>St. George's Arms</name>
           <average_price>20.32</average_price>
           <number_of_beers>2</number_of_beers>
+          <number_of_ciders>
+            5
+          </number_of_ciders>
         </root>
       """
-    And I call "int('/root/number_of_beers')" on the document
+
+  Scenario: getting the int of a single node
+    When I call "int('/root/number_of_beers')" on the document
     Then the result should be 2
 
   Scenario: getting the int of a single node with whitespace
-    When I parse the XML:
-      """
-        <root>
-          <name>St. George's Arms</name>
-          <average_price>20.32</average_price>
-          <number_of_beers>
-            2
-          </number_of_beers>
-        </root>
-      """
-    And I call "int('/root/number_of_beers')" on the document
-    Then the result should be 2
+    When I call "int('/root/number_of_ciders')" on the document
+    Then the result should be 5
 
   Scenario: getting the int of a node that doesn't contain an int
-    When I parse the XML:
-      """
-        <root>
-          <name>St. George's Arms</name>
-          <average_price>20.32</average_price>
-          <number_of_beers>
-            2
-          </number_of_beers>
-        </root>
-      """
-    Then calling "int('/root/name')" on the document should raise an "InvalidFormat" error
+    When I call "int('/root/name')" on the document
+    Then it should raise an "InvalidFormat" error
     And the error should have the value "St. George's Arms"
     And the error should have the format "int"
 
   Scenario: getting the int of a non-existent node
-    When I parse the XML:
-      """
-        <root>
-          <name>St. George's Arms</name>
-          <average_price>20.32</average_price>
-          <number_of_beers>2</number_of_beers>
-        </root>
-      """
-    Then calling "int('//something/missing')" on the document should raise a "NotFound" error
+    When I call "int('//something/missing')" on the document
+    Then it should raise a "NotFound" error
     And the error should have the xpath "//something/missing"
     And the error should have a stored node
