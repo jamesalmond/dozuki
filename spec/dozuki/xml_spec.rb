@@ -10,7 +10,7 @@ module Dozuki
 
       before(:each) do
         Nokogiri::XML.stub(:parse).and_return(nokogiri_node)
-        XML::Node.stub(:new).and_return(dozuki_xml_node)
+        Node.stub(:new).and_return(dozuki_xml_node)
       end
 
       subject{XML.parse(*args)}
@@ -21,7 +21,7 @@ module Dozuki
       end
 
       it "should create a new Node with the nokogiri doc" do
-        XML::Node.should_receive(:new).with(nokogiri_node).and_return(dozuki_xml_node)
+        Node.should_receive(:new).with(nokogiri_node).and_return(dozuki_xml_node)
         subject
       end
 

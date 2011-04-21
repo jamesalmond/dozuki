@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Dozuki::XML
+module Dozuki
   describe Node do
 
     describe "initialization" do
