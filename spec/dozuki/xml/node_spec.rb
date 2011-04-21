@@ -116,7 +116,7 @@ module Dozuki::XML
           nokogiri_node.should_receive(:xpath).and_return([])
         end
         it "should raise a NotFound error" do
-          expect{subject}.to raise_error(NotFound)
+          expect{subject}.to raise_error(Dozuki::NotFound)
         end
       end
     end
@@ -151,7 +151,7 @@ module Dozuki::XML
           nokogiri_node.should_receive(:xpath).and_return([])
         end
         it "should raise a NotFound error" do
-          expect{subject}.to raise_error(NotFound)
+          expect{subject}.to raise_error(Dozuki::NotFound)
         end
       end
     end
@@ -186,7 +186,7 @@ module Dozuki::XML
           nokogiri_node.should_receive(:xpath).and_return([])
         end
         it "should raise a NotFound error" do
-          expect{subject}.to raise_error(NotFound)
+          expect{subject}.to raise_error(Dozuki::NotFound)
         end
       end
     end
@@ -216,7 +216,7 @@ module Dozuki::XML
           nokogiri_node.should_receive(:xpath).and_return([])
         end
         it "should raise a NotFound error" do
-          expect{subject}.to raise_error(NotFound)
+          expect{subject}.to raise_error(Dozuki::NotFound)
         end
       end
       context "where a block is passed" do

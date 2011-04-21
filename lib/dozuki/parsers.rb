@@ -11,7 +11,7 @@ module Dozuki
         begin
           Integer(string)
         rescue ArgumentError
-          raise XML::InvalidFormat.new(:node => node, :value => string, :format => "integer")
+          raise InvalidFormat.new(:node => node, :value => string, :format => "integer")
         end
       end
     end
@@ -21,7 +21,7 @@ module Dozuki
         begin
           Float(string)
         rescue ArgumentError
-          raise XML::InvalidFormat.new(:node => node, :value => string, :format => "float")
+          raise InvalidFormat.new(:node => node, :value => string, :format => "float")
         end
       end
     end

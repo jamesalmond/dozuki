@@ -38,13 +38,13 @@ module Dozuki
           context "where there is characters in the string" do
             let(:string){"fjkdsk"}
             it "should raise an error" do
-              expect{subject}.to raise_error(XML::InvalidFormat, "Cannot parse 'fjkdsk' to integer")
+              expect{subject}.to raise_error(InvalidFormat, "Cannot parse 'fjkdsk' to integer")
             end
           end
           context "where there are dots" do
             let(:string){"0.4"}
             it "should raise an error" do
-              expect{subject}.to raise_error(XML::InvalidFormat)
+              expect{subject}.to raise_error(InvalidFormat)
             end
           end
         end
@@ -68,13 +68,13 @@ module Dozuki
             context "where there is characters in the string" do
               let(:string){"fjkdsk"}
               it "should raise an error" do
-                expect{subject}.to raise_error(XML::InvalidFormat, "Cannot parse 'fjkdsk' to float")
+                expect{subject}.to raise_error(InvalidFormat, "Cannot parse 'fjkdsk' to float")
               end
             end
             context "where there are multiple dots" do
               let(:string){"0.0.4"}
               it "should raise an error" do
-                expect{subject}.to raise_error(XML::InvalidFormat)
+                expect{subject}.to raise_error(InvalidFormat)
               end
             end
           end

@@ -1,5 +1,5 @@
 Then /^it should raise an? "([^"]*)" error$/ do |error|
-  @error.should be_a Dozuki::XML.const_get(error)
+  @error.should be_a Dozuki.const_get(error)
 end
 
 Then /^the error should have the (\w+) "([^"]*)"$/ do |method, value|
