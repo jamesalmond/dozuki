@@ -8,14 +8,20 @@ module Dozuki
 
       def self.to_int(node)
         string = to_string(node)
-        raise InvalidFormat.new("Parsing error", :node => node, :value => string, :format => "int") unless string =~ /^-?[0-9]+$/
-        string.to_i
+        begin
+          Integer(to_string(node))
+        rescue ArgumentError
+          raise InvalidFormat.new(:node => node, :value => string, :format => "integer")
+        end
       end
 
       def self.to_float(node)
         string = to_string(node)
-        raise InvalidFormat.new("Parsing error", :node => node, :value => string, :format => "float") unless string =~ /^-?[0-9]+(\.[0-9]+)?$/
-        string.to_f
+        begin
+          Float(string)
+        rescue ArgumentError
+          raise InvalidFormat.new(:node => node, :value => string, :format => "float")
+        end
       end
 
     end

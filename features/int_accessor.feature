@@ -28,7 +28,7 @@ Feature: Getting integers from the document
     When I call "int('/root/name')" on the document
     Then it should raise an "InvalidFormat" error
     And the error should have the value "St. George's Arms"
-    And the error should have the format "int"
+    And the error should have the format "integer"
 
   Scenario: getting the int of a non-existent node
     When I call "int('//something/missing')" on the document
