@@ -24,9 +24,13 @@ to:
 
 ## How do I use it?
 
-Parsing XML (currently only supports strings):
-
-    doc = Dozuki::XML.parse(xml_string)
+The parse method supports all input parameters supported by [Nokogiri's
+parse method](http://nokogiri.org/Nokogiri/XML/Document.html#parse):
+    # simple usage
+    doc = Dozuki::XML.parse(string_or_io)
+    
+    # or the full parameter list
+    doc = Dozuki::XML.parse(string_or_io, url = nil, encoding = nil, options = ParseOptions::DEFAULT_XML)
 
 This documents supports the Dozuki extensions for:
 
