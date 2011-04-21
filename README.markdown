@@ -52,7 +52,7 @@ The get methods takes an xpath and returns the first node that matches the xpath
 
 If the node can't be found then an exception is raised.
 
-### Extracting a single node of a certain type
+### Extracting and parsing the value of a single node
 
 The following methods take the first node that matches the xpath and returns the formatted result:
 
