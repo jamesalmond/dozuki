@@ -19,7 +19,7 @@ Feature: Getting nodes from the document
 
   Scenario: getting a single node
     When I call "get('//rooms')" on the document
-    Then the result should be a "Dozuki::XML::Node"
+    Then the result should be a "Dozuki::Node"
     And the result should have 2 elements
 
   Scenario: getting the first of multiple nodes
@@ -28,7 +28,7 @@ Feature: Getting nodes from the document
 
   Scenario: getting a single node but accessing it with a block
     When I call "get('//rooms')" on the document with a block
-    Then the block parameter should be a "Dozuki::XML::Node"
+    Then the block parameter should be a "Dozuki::Node"
     And the parameter should have 2 elements
 
   Scenario: getting a non-existent node
