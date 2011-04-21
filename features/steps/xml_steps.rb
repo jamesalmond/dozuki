@@ -6,15 +6,15 @@ Then /^the float result should be (\d+\.\d+)$/ do |float|
   @result.should == float.to_f
 end
 
-Then /^the error should have the xpath "([^"]*)"$/ do |xpath|
-  @error.xpath.should == xpath
+Then /^the error should have the (\w+) "([^"]*)"$/ do |method, value|
+  @error.send(method).should == value
 end
 
 Then /^the error should have a stored node$/ do
   @error.node.should_not be_nil
 end
 
-Then /^calling "([^"]*)" on the document should raise a "([^"]*)" error$/ do |code, error|
+Then /^calling "([^"]*)" on the document should raise an? "([^"]*)" error$/ do |code, error|
   begin
     @doc.instance_eval(code)
     fail "Expected error #{error}, nothing raised"
