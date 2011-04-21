@@ -5,8 +5,8 @@ require 'dozuki/xml/exceptions'
 
 module Dozuki
   module XML
-    def self.parse(string)
-      Node.new(Nokogiri::XML.parse(string))
+    def self.parse(*args)
+      Node.new(Nokogiri::XML.parse(*args))
     end
   end
 end

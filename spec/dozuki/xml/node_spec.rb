@@ -2,13 +2,13 @@ require 'spec_helper'
 
 module Dozuki::XML
   describe Node do
-    
+
     describe "initialization" do
       let(:nokogiri_node){mock("nokogiri_node")}
       subject{Node.new(nokogiri_node)}
       its(:nokogiri_node){should  == nokogiri_node}
     end
-    
+
     describe "missing methods" do
       let(:nokogiri_node){mock("nokogiri node")}
       subject{Node.new(nokogiri_node)}
@@ -26,8 +26,8 @@ module Dozuki::XML
         nokogiri_node.should_receive(:blah).with(&blk)
         subject.blah(&blk)
       end
-    end    
-    
+    end
+
     describe "responding to nokogiri's methods" do
       let(:nokogiri_node){mock("nokogiri node")}
       let(:node){Node.new(nokogiri_node)}
@@ -45,7 +45,7 @@ module Dozuki::XML
         end
       end
     end
-    
+
     describe "each" do
       let(:nokogiri_node)   {mock("nokogiri_node")}
       let(:xpath)           {"/some/xpath"}
@@ -59,21 +59,21 @@ module Dozuki::XML
 
       end
       subject{node.each(xpath)}
-      
+
       it "should get the collection from the nokogiri node" do
         nokogiri_node.should_receive(:xpath).with(xpath)
         subject
       end
-      
+
       it "should create a new NodeCollection with the collection" do
         NodeCollection.should_receive(:new).with(collection)
         subject
       end
-      
+
       it "should return the collection" do
         subject.should == node_collection
       end
-      
+
       context "where no block is passed" do
         before(:each) do
           node_collection.stub(:as_node).and_return(node_collection)
@@ -85,21 +85,21 @@ module Dozuki::XML
         end
       end
     end
-    
+
     describe "string" do
       let(:nokogiri_node)   { mock("nokogiri_node") }
       let(:xpath)           { "/some/xpath" }
       let(:node)            { Node.new(nokogiri_node) }
       let(:text_node)       { mock "some node" }
       let(:parsed)   { mock "parsed result" }
-      
+
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([text_node])
         Parser.stub(:to_string).and_return(parsed)
       end
-      
+
       subject{ node.string(xpath) }
-      
+
       it "should get the collection from the nokogiri node" do
         nokogiri_node.should_receive(:xpath).with(xpath)
         subject
@@ -120,21 +120,21 @@ module Dozuki::XML
         end
       end
     end
-    
+
     describe "int" do
       let(:nokogiri_node)   { mock("nokogiri_node") }
       let(:xpath)           { "/some/xpath" }
       let(:node)            { Node.new(nokogiri_node) }
       let(:int_node)       { mock "some node" }
       let(:parsed)   { mock "parsed result" }
-      
+
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([int_node])
         Parser.stub(:to_int).and_return(parsed)
       end
-      
+
       subject{ node.int(xpath) }
-      
+
       it "should get the collection from the nokogiri node" do
         nokogiri_node.should_receive(:xpath).with(xpath)
         subject
@@ -155,21 +155,21 @@ module Dozuki::XML
         end
       end
     end
-    
+
     describe "float" do
       let(:nokogiri_node)   { mock("nokogiri_node") }
       let(:xpath)           { "/some/xpath" }
       let(:node)            { Node.new(nokogiri_node) }
       let(:float_node)       { mock "some node" }
       let(:parsed)   { mock "parsed result" }
-      
+
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([float_node])
         Parser.stub(:to_float).and_return(parsed)
       end
-      
+
       subject{ node.float(xpath) }
-      
+
       it "should get the collection from the nokogiri node" do
         nokogiri_node.should_receive(:xpath).with(xpath)
         subject
@@ -190,19 +190,19 @@ module Dozuki::XML
         end
       end
     end
-    
+
     describe "get" do
       let(:nokogiri_node)   { mock("nokogiri_node") }
       let(:xpath)           { "/some/xpath" }
       let(:node)            { Node.new(nokogiri_node) }
       let(:wanted_node)     { mock "some node" }
-      
+
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([wanted_node])
       end
-      
+
       subject{ node.get(xpath) }
-      
+
       it "should get the collection from the nokogiri node" do
         nokogiri_node.should_receive(:xpath).with(xpath)
         subject
@@ -210,7 +210,7 @@ module Dozuki::XML
       it "should return the new dozuki node" do
         subject.nokogiri_node.should == wanted_node
       end
-      
+
       context "where the xpath returns no node" do
         before(:each) do
           nokogiri_node.should_receive(:xpath).and_return([])
@@ -228,7 +228,7 @@ module Dozuki::XML
         end
       end
     end
-    
+
     describe "exists?" do
       let(:nokogiri_node)   { mock("nokogiri_node") }
       let(:xpath)           { "/some/xpath" }
@@ -252,6 +252,6 @@ module Dozuki::XML
         end
       end
     end
-    
+
   end
 end

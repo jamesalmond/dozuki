@@ -2,7 +2,7 @@ require 'spec_helper'
 module Dozuki
   module XML
     describe NodeCollection do
-      
+
       describe "as_node" do
         let(:collection){mock "some_nodes"}
         let(:blk){Proc.new{}}
@@ -13,9 +13,9 @@ module Dozuki
           collection.stub(:each).and_yield(collection_item)
           Node.stub(:new).and_return(new_node)
         end
-        
+
         subject{node_collection.as_node(&blk)}
-        
+
         it "should iterate through the collection" do
           collection.should_receive(:each)
           subject
@@ -29,7 +29,7 @@ module Dozuki
           subject
         end
       end
-      
+
       describe "as_string" do
         let(:collection){mock "some_nodes"}
         let(:blk){Proc.new{}}
@@ -40,9 +40,9 @@ module Dozuki
           collection.stub(:each).and_yield(collection_item)
           Parser.stub(:to_string).and_return(string)
         end
-        
+
         subject{node_collection.as_string(&blk)}
-        
+
         it "should iterate through the collection" do
           collection.should_receive(:each)
           subject
@@ -56,7 +56,7 @@ module Dozuki
           subject
         end
       end
-      
+
       describe "as_int" do
         let(:collection){mock "some_nodes"}
         let(:blk){Proc.new{}}
@@ -67,9 +67,9 @@ module Dozuki
           collection.stub(:each).and_yield(collection_item)
           Parser.stub(:to_int).and_return(int)
         end
-        
+
         subject{node_collection.as_int(&blk)}
-        
+
         it "should iterate through the collection" do
           collection.should_receive(:each)
           subject
@@ -83,7 +83,7 @@ module Dozuki
           subject
         end
       end
-      
+
       describe "as_float" do
         let(:collection){mock "some_nodes"}
         let(:blk){Proc.new{}}
@@ -94,9 +94,9 @@ module Dozuki
           collection.stub(:each).and_yield(collection_item)
           Parser.stub(:to_float).and_return(float)
         end
-        
+
         subject{node_collection.as_float(&blk)}
-        
+
         it "should iterate through the collection" do
           collection.should_receive(:each)
           subject
@@ -110,8 +110,7 @@ module Dozuki
           subject
         end
       end
-      
-      
+
     end
   end
 end
