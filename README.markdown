@@ -62,7 +62,7 @@ The following methods take the first node that matches the xpath and returns the
 
 These functions are to replace calls using plain Nokogiri such as:
 
-  doc.xpath('/my/xpath').first.to_i
+    doc.xpath('/my/xpath').first.to_i
 
 ### Checking whether an element exists
 
