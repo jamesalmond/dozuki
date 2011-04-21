@@ -29,9 +29,18 @@ parse method](http://nokogiri.org/Nokogiri/XML/Document.html#parse):
 
     # simple usage
     doc = Dozuki::XML.parse(string_or_io)
+
+    # HTML
+    html = Dozuki::HTML.parse(string_or_io)
     
     # or the full parameter list
     doc = Dozuki::XML.parse(string_or_io, url = nil, encoding = nil, options = ParseOptions::DEFAULT_XML)
+    doc = Dozuki::HTML.parse(string_or_io, url = nil, encoding = nil, options = ParseOptions::DEFAULT_XML)
+
+    # or using the quick methods
+    doc  = Dozuki::XML(string_or_io, ...)
+    html = Dozuki::HTML(string_or_io, ...)
+    
 
 This documents supports the Dozuki extensions for:
 
