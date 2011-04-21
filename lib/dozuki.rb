@@ -12,4 +12,7 @@ module Dozuki
   def self.HTML(*args)
     HTML.parse(*args)
   end
+  def self.XML(*args)
+    XML.parse(*args)
+  end
 end
