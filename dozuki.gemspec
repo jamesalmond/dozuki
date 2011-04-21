@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["James Almond"]
   s.email       = ["james@jamesalmond.com"]
   s.homepage    = "https://github.com/jamesalmond/dozuki"
-  s.summary     = %q{An XPath syntactic sugar wrapper for Nokogiri}
-  s.description = %q{A simple way of extracting various elements from an XML document using XPaths}
+  s.summary     = %q{A syntactic sugar wrapper for Nokogiri}
+  s.description = %q{A simple way of extracting various elements from an Nokogiri document using XPaths}
 
   s.rubyforge_project = "dozuki"
 
