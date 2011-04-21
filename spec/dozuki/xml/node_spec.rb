@@ -95,7 +95,7 @@ module Dozuki::XML
 
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([text_node])
-        Parser.stub(:to_string).and_return(parsed)
+        Dozuki::Parsers::String.stub(:parse).and_return(parsed)
       end
 
       subject{ node.string(xpath) }
@@ -105,7 +105,7 @@ module Dozuki::XML
         subject
       end
       it "should parse the node to a string" do
-        Parser.should_receive(:to_string).with(text_node)
+        Dozuki::Parsers::String.should_receive(:parse).with(text_node)
         subject
       end
       it "should return the parsed result" do
@@ -130,7 +130,7 @@ module Dozuki::XML
 
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([int_node])
-        Parser.stub(:to_int).and_return(parsed)
+        Dozuki::Parsers::Integer.stub(:parse).and_return(parsed)
       end
 
       subject{ node.int(xpath) }
@@ -140,7 +140,7 @@ module Dozuki::XML
         subject
       end
       it "should parse the node to an int" do
-        Parser.should_receive(:to_int).with(int_node)
+        Dozuki::Parsers::Integer.should_receive(:parse).with(int_node)
         subject
       end
       it "should return the parsed result" do
@@ -165,7 +165,7 @@ module Dozuki::XML
 
       before(:each) do
         nokogiri_node.stub(:xpath).and_return([float_node])
-        Parser.stub(:to_float).and_return(parsed)
+        Dozuki::Parsers::Float.stub(:parse).and_return(parsed)
       end
 
       subject{ node.float(xpath) }
@@ -175,7 +175,7 @@ module Dozuki::XML
         subject
       end
       it "should parse the node to an int" do
-        Parser.should_receive(:to_float).with(float_node)
+        Dozuki::Parsers::Float.should_receive(:parse).with(float_node)
         subject
       end
       it "should return the parsed result" do

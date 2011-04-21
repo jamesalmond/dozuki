@@ -1,3 +1,4 @@
+require 'dozuki/parsers'
 module Dozuki
   module XML
     class Node
@@ -21,15 +22,15 @@ module Dozuki
       end
 
       def string(xpath)
-        Parser.to_string(get_first_node(xpath))
+        Parsers::String.parse(get_first_node(xpath))
       end
 
       def int(xpath)
-        Parser.to_int(get_first_node(xpath))
+        Parsers::Integer.parse(get_first_node(xpath))
       end
 
       def float(xpath)
-        Parser.to_float(get_first_node(xpath))
+        Parsers::Float.parse(get_first_node(xpath))
       end
 
       def get(xpath)

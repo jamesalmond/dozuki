@@ -38,7 +38,7 @@ module Dozuki
         let(:string){"string"}
         before(:each) do
           collection.stub(:each).and_yield(collection_item)
-          Parser.stub(:to_string).and_return(string)
+          Dozuki::Parsers::String.stub(:parse).and_return(string)
         end
 
         subject{node_collection.as_string(&blk)}
@@ -48,7 +48,7 @@ module Dozuki
           subject
         end
         it "should create a new Node with the yielded collection item"  do
-          Parser.should_receive(:to_string).with(collection_item)
+          Dozuki::Parsers::String.should_receive(:parse).with(collection_item)
           subject
         end
         it "should call the bloc with the node" do
@@ -65,7 +65,7 @@ module Dozuki
         let(:int){39}
         before(:each) do
           collection.stub(:each).and_yield(collection_item)
-          Parser.stub(:to_int).and_return(int)
+          Dozuki::Parsers::Integer.stub(:parse).and_return(int)
         end
 
         subject{node_collection.as_int(&blk)}
@@ -75,7 +75,7 @@ module Dozuki
           subject
         end
         it "should create a new Node with the yielded collection item"  do
-          Parser.should_receive(:to_int).with(collection_item)
+          Dozuki::Parsers::Integer.should_receive(:parse).with(collection_item)
           subject
         end
         it "should call the bloc with the node" do
@@ -92,7 +92,7 @@ module Dozuki
         let(:float){39.50}
         before(:each) do
           collection.stub(:each).and_yield(collection_item)
-          Parser.stub(:to_float).and_return(float)
+          Dozuki::Parsers::Float.stub(:parse).and_return(float)
         end
 
         subject{node_collection.as_float(&blk)}
@@ -102,7 +102,7 @@ module Dozuki
           subject
         end
         it "should create a new Node with the yielded collection item"  do
-          Parser.should_receive(:to_float).with(collection_item)
+          Dozuki::Parsers::Float.should_receive(:parse).with(collection_item)
           subject
         end
         it "should call the bloc with the node" do
