@@ -54,7 +54,6 @@ DEPENDENCIES
   autotest
   cucumber
   dozuki!
-  nokogiri
   rake
   rspec
   ruby-debug19
