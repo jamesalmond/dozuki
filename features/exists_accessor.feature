@@ -2,8 +2,7 @@ Feature: Exists accessor
   In order to easily determine whether a node exists in a document
   As a traverser
   I want to check whether a node exists
-  
-  
+
   Scenario: the node exists
     When I parse the XML:
       """
@@ -15,7 +14,7 @@ Feature: Exists accessor
       """
     And I call "exists?('/root/number_of_beers')" on the document
     Then the result should be true
-    
+
   Scenario: the node doesn't exist
     When I parse the XML:
       """

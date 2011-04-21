@@ -14,7 +14,7 @@ Feature: Getting strings from the document
       """
     And I call "string('/root/name')" on the document
     Then the result should be "St. George's Arms"
-    
+
   Scenario: getting the text of a single node with whitespace
     When I parse the XML:
       """
@@ -26,7 +26,7 @@ Feature: Getting strings from the document
       """
     And I call "string('/root/name')" on the document
     Then the result should be "St. George's Arms"
-    
+
   Scenario: getting a non-existent node
     When I parse the XML:
       """

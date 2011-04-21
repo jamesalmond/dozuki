@@ -2,7 +2,7 @@ Feature: Getting nodes from the document
   In order to provide a unified interface to the xml objects
   As a traverser
   I want to access nodes using the get method and an xpath
-  
+
   Scenario: getting a single node
     When I parse the XML:
       """
@@ -36,7 +36,7 @@ Feature: Getting nodes from the document
     And I call "get('//rooms')" on the document with a block
     Then the block parameter should be a "Dozuki::XML::Node"
     And the parameter should have 2 elements
-    
+
   Scenario: getting the first of multiple nodes
     When I parse the XML:
       """
@@ -52,7 +52,7 @@ Feature: Getting nodes from the document
       """
     And I call "get('//rooms/room')" on the document
     Then the result should have the text "SINGLE"
-    
+
   Scenario: getting a non-existent node
     When I parse the XML:
       """
