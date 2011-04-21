@@ -26,6 +26,7 @@ to:
 
 The parse method supports all input parameters supported by [Nokogiri's
 parse method](http://nokogiri.org/Nokogiri/XML/Document.html#parse):
+
     # simple usage
     doc = Dozuki::XML.parse(string_or_io)
     
