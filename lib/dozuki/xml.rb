@@ -1,6 +1,5 @@
 require 'dozuki/xml/node'
 require 'dozuki/xml/node_collection'
-require 'dozuki/xml/parser'
 
 module Dozuki
   module XML
