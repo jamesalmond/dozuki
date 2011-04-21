@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dozuki (0.0.1)
+    dozuki (0.1.0)
       nokogiri
 
 GEM
