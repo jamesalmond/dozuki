@@ -2,11 +2,12 @@ require 'spec_helper'
 module Dozuki
   describe NodeCollection do
 
-    describe "as_node" do
-      let(:collection_item){mock "collection item"}
-      let(:collection){ [collection_item] }
-      let(:node_collection){NodeCollection.new(collection)}
+    let(:collection_item){mock "collection item"}
+    let(:collection){ [collection_item] }
+    let(:node_collection){NodeCollection.new(collection)}
 
+
+    describe "as_node" do
       let(:a_dozuki_node){mock "a dozuki node"}
 
       before(:each) do
@@ -26,9 +27,6 @@ module Dozuki
     end
 
     describe "as_string" do
-      let(:collection_item){mock "collection item"}
-      let(:collection){ [collection_item] }
-      let(:node_collection){NodeCollection.new(collection)}
 
       let(:a_string){"string"}
 
@@ -49,9 +47,6 @@ module Dozuki
     end
 
     describe "as_int" do
-      let(:collection_item){mock "collection item"}
-      let(:collection){[collection_item]}
-      let(:node_collection){NodeCollection.new(collection)}
 
       let(:an_int){39}
 
@@ -72,9 +67,7 @@ module Dozuki
     end
 
     describe "as_float" do
-      let(:collection_item){mock "collection item"}
-      let(:collection){ [collection_item] }
-      let(:node_collection){NodeCollection.new(collection)}
+
       let(:a_float){39.50}
 
       before(:each) do
