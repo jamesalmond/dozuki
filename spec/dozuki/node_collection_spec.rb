@@ -3,110 +3,93 @@ module Dozuki
   describe NodeCollection do
 
     describe "as_node" do
-      let(:collection){mock "some_nodes"}
-      let(:blk){Proc.new{}}
-      let(:node_collection){NodeCollection.new(collection)}
       let(:collection_item){mock "collection item"}
-      let(:new_node){mock "new node"}
+      let(:collection){ [collection_item] }
+      let(:node_collection){NodeCollection.new(collection)}
+
+      let(:a_dozuki_node){mock "a dozuki node"}
+
       before(:each) do
-        collection.stub(:each).and_yield(collection_item)
-        Node.stub(:new).and_return(new_node)
+        Node.stub(:new).and_return(a_dozuki_node)
       end
 
-      subject{node_collection.as_node(&blk)}
+      subject{ node_collection.as_node{|arg| @block_called_with = arg} }
 
-      it "should iterate through the collection" do
-        collection.should_receive(:each)
-        subject
-      end
       it "should create a new Node with the yielded collection item"  do
-        Node.should_receive(:new).with(collection_item)
+        Node.should_receive(:new).with(collection_item).and_return(a_dozuki_node)
         subject
       end
-      it "should call the bloc with the node" do
-        blk.should_receive(:call).with(new_node)
+      it "should call the block with the wrapped dozuki node" do
         subject
+        @block_called_with.should == a_dozuki_node
       end
     end
 
     describe "as_string" do
-      let(:collection){mock "some_nodes"}
-      let(:blk){Proc.new{}}
-      let(:node_collection){NodeCollection.new(collection)}
       let(:collection_item){mock "collection item"}
-      let(:string){"string"}
+      let(:collection){ [collection_item] }
+      let(:node_collection){NodeCollection.new(collection)}
+
+      let(:a_string){"string"}
+
       before(:each) do
-        collection.stub(:each).and_yield(collection_item)
-        Dozuki::Parsers::String.stub(:parse).and_return(string)
+        Dozuki::Parsers::String.stub(:parse).and_return(a_string)
       end
 
-      subject{node_collection.as_string(&blk)}
+      subject{ node_collection.as_string{|arg| @block_called_with = arg} }
 
-      it "should iterate through the collection" do
-        collection.should_receive(:each)
-        subject
-      end
       it "should create a new Node with the yielded collection item"  do
-        Dozuki::Parsers::String.should_receive(:parse).with(collection_item)
+        Dozuki::Parsers::String.should_receive(:parse).with(collection_item).and_return(a_string)
         subject
       end
-      it "should call the bloc with the node" do
-        blk.should_receive(:call).with("string")
+      it "should call the bloc with the string" do
         subject
+        @block_called_with.should == a_string
       end
     end
 
     describe "as_int" do
-      let(:collection){mock "some_nodes"}
-      let(:blk){Proc.new{}}
-      let(:node_collection){NodeCollection.new(collection)}
       let(:collection_item){mock "collection item"}
-      let(:int){39}
+      let(:collection){[collection_item]}
+      let(:node_collection){NodeCollection.new(collection)}
+
+      let(:an_int){39}
+
       before(:each) do
-        collection.stub(:each).and_yield(collection_item)
-        Dozuki::Parsers::Integer.stub(:parse).and_return(int)
+        Dozuki::Parsers::Integer.stub(:parse).and_return(an_int)
       end
 
-      subject{node_collection.as_int(&blk)}
+      subject{ node_collection.as_int{|arg| @block_called_with = arg} }
 
-      it "should iterate through the collection" do
-        collection.should_receive(:each)
-        subject
-      end
       it "should create a new Node with the yielded collection item"  do
-        Dozuki::Parsers::Integer.should_receive(:parse).with(collection_item)
+        Dozuki::Parsers::Integer.should_receive(:parse).with(collection_item).and_return(an_int)
         subject
       end
-      it "should call the bloc with the node" do
-        blk.should_receive(:call).with(int)
+      it "should call the bloc with the integer" do
         subject
+        @block_called_with.should == an_int
       end
     end
 
     describe "as_float" do
-      let(:collection){mock "some_nodes"}
-      let(:blk){Proc.new{}}
-      let(:node_collection){NodeCollection.new(collection)}
       let(:collection_item){mock "collection item"}
-      let(:float){39.50}
+      let(:collection){ [collection_item] }
+      let(:node_collection){NodeCollection.new(collection)}
+      let(:a_float){39.50}
+
       before(:each) do
-        collection.stub(:each).and_yield(collection_item)
-        Dozuki::Parsers::Float.stub(:parse).and_return(float)
+        Dozuki::Parsers::Float.stub(:parse).and_return(a_float)
       end
 
-      subject{node_collection.as_float(&blk)}
+      subject{node_collection.as_float{|arg| @block_called_with = arg}}
 
-      it "should iterate through the collection" do
-        collection.should_receive(:each)
-        subject
-      end
       it "should create a new Node with the yielded collection item"  do
-        Dozuki::Parsers::Float.should_receive(:parse).with(collection_item)
+        Dozuki::Parsers::Float.should_receive(:parse).with(collection_item).and_return(a_float)
         subject
       end
       it "should call the bloc with the node" do
-        blk.should_receive(:call).with(float)
         subject
+        @block_called_with.should == a_float
       end
     end
 
