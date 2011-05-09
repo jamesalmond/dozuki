@@ -31,6 +31,9 @@ module Dozuki
     def float(xpath)
       Parsers::Float.parse(get_first_node(xpath))
     end
+    def date(xpath)
+      Parsers::Date.parse(get_first_node(xpath))
+    end
 
     def get(xpath)
       node = Node.new(get_first_node(xpath))

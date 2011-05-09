@@ -191,6 +191,41 @@ module Dozuki
       end
     end
 
+    describe "date" do
+      let(:nokogiri_node)   { mock("nokogiri_node") }
+      let(:xpath)           { "/some/xpath" }
+      let(:node)            { Node.new(nokogiri_node) }
+      let(:date_node)       { mock "some node" }
+      let(:parsed)   { mock "parsed result" }
+
+      before(:each) do
+        nokogiri_node.stub(:xpath).and_return([date_node])
+        Dozuki::Parsers::Date.stub(:parse).and_return(parsed)
+      end
+
+      subject{ node.date(xpath) }
+
+      it "should get the collection from the nokogiri node" do
+        nokogiri_node.should_receive(:xpath).with(xpath)
+        subject
+      end
+      it "should parse the node to a date" do
+        Dozuki::Parsers::Date.should_receive(:parse).with(date_node)
+        subject
+      end
+      it "should return the parsed result" do
+        subject.should == parsed
+      end
+      context "where the xpath returns no node" do
+        before(:each) do
+          nokogiri_node.should_receive(:xpath).and_return([])
+        end
+        it "should raise a NotFound error" do
+          expect{subject}.to raise_error(Dozuki::NotFound)
+        end
+      end
+    end
+
     describe "get" do
       let(:nokogiri_node)   { mock("nokogiri_node") }
       let(:xpath)           { "/some/xpath" }

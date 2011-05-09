@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Dozuki
   module Parsers
-    
+
     describe String do
       describe ".parse" do
         let(:string){"something"}
@@ -80,7 +80,26 @@ module Dozuki
           end
         end
       end
+    end
 
+    describe Date do
+      describe ".parse" do
+        let(:string){"2011-01-03"}
+        let(:node) { mock :node , :text => string }
+
+        subject { Date.parse(node) }
+
+        it{ should == ::Date.civil(2011, 1, 3)}
+
+        context "where the string has whitespace" do
+          let(:string){"\n\n2011-04-01"}
+          it{ should == ::Date.civil(2011, 4, 1)}
+        end
+        context "where the string is not a valid date" do
+          let(:string){ "dhjklfsjkfjkds" }
+          specify { expect{ subject}.to raise_error(InvalidFormat)}
+        end
+      end
     end
   end
 end

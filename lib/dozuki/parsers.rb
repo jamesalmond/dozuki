@@ -25,5 +25,15 @@ module Dozuki
         end
       end
     end
+    module Date
+      def self.parse(node)
+        string = String.parse(node)
+        begin
+          ::Date.parse(string)
+        rescue ArgumentError
+          raise InvalidFormat.new(:node => node, :value => string, :format => "date")
+        end
+      end
+    end
   end
 end
