@@ -17,3 +17,8 @@ end
 Then /^the result should be false$/ do
   @result.should == false
 end
+
+Then /^the result should be (\d+)\/(\d+)\/(\d+)$/ do |day, month, year|
+  @result.should == Date.civil(year.to_i, month.to_i, day.to_i)
+end
+
