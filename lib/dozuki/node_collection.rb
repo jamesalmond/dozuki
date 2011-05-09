@@ -21,5 +21,8 @@ module Dozuki
     def as_float(&blk)
       collection.each{|item| blk.call(Parsers::Float.parse(item))}
     end
+    def as_date(&blk)
+      collection.each{|item| blk.call(Parsers::Date.parse(item))}
+    end
   end
 end

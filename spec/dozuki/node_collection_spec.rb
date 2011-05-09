@@ -85,6 +85,26 @@ module Dozuki
         @block_called_with.should == a_float
       end
     end
+    
+    describe "as_date" do
+
+      let(:a_date){Date.civil(2012, 2,5)}
+
+      before(:each) do
+        Dozuki::Parsers::Date.stub(:parse).and_return(a_date)
+      end
+
+      subject{node_collection.as_date{|arg| @block_called_with = arg}}
+
+      it "should create a new Node with the yielded collection item"  do
+        Dozuki::Parsers::Date.should_receive(:parse).with(collection_item).and_return(a_date)
+        subject
+      end
+      it "should call the bloc with the node" do
+        subject
+        @block_called_with.should == a_date
+      end
+    end
 
   end
 end
