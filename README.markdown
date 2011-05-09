@@ -8,7 +8,7 @@ A Nokogiri wrapper that simplifies commonly occurring tasks.
 
 Dozuki removes the repetitive tasks from parsing XML documents with XPaths such as:
 
-* extracting ints, floats, strings etc.
+* extracting ints, floats, strings, dates etc.
 * accessing single nodes
 * checking whether an element exists
 * iterating through nodes
@@ -59,6 +59,7 @@ The following methods take the first node that matches the xpath and returns the
     doc.string('/my/xpath') # surrounding whitespace stripped
     doc.float('/my/xpath')
     doc.int('/my/xpath')
+    doc.date('/my/xpath') # format yyyy-mm-dd
 
 These functions are to replace calls using plain Nokogiri such as:
 
