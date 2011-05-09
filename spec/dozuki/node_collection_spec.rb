@@ -36,11 +36,11 @@ module Dozuki
 
       subject{ node_collection.as_string{|arg| @block_called_with = arg} }
 
-      it "should create a new Node with the yielded collection item"  do
+      it "should parse the node to a string"  do
         Dozuki::Parsers::String.should_receive(:parse).with(collection_item).and_return(a_string)
         subject
       end
-      it "should call the bloc with the string" do
+      it "should call the block with the string" do
         subject
         @block_called_with.should == a_string
       end
@@ -56,11 +56,11 @@ module Dozuki
 
       subject{ node_collection.as_int{|arg| @block_called_with = arg} }
 
-      it "should create a new Node with the yielded collection item"  do
+      it "should parse the node to an integer"  do
         Dozuki::Parsers::Integer.should_receive(:parse).with(collection_item).and_return(an_int)
         subject
       end
-      it "should call the bloc with the integer" do
+      it "should call the block with the integer" do
         subject
         @block_called_with.should == an_int
       end
@@ -76,11 +76,11 @@ module Dozuki
 
       subject{node_collection.as_float{|arg| @block_called_with = arg}}
 
-      it "should create a new Node with the yielded collection item"  do
+      it "should parse the node to a float"  do
         Dozuki::Parsers::Float.should_receive(:parse).with(collection_item).and_return(a_float)
         subject
       end
-      it "should call the bloc with the node" do
+      it "should call the block with the float" do
         subject
         @block_called_with.should == a_float
       end
@@ -96,11 +96,11 @@ module Dozuki
 
       subject{node_collection.as_date{|arg| @block_called_with = arg}}
 
-      it "should create a new Node with the yielded collection item"  do
+      it "should parse the node to a date"  do
         Dozuki::Parsers::Date.should_receive(:parse).with(collection_item).and_return(a_date)
         subject
       end
-      it "should call the bloc with the node" do
+      it "should call the block with the date" do
         subject
         @block_called_with.should == a_date
       end
