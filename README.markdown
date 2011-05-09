@@ -85,12 +85,16 @@ There are also simple ways to extract formatted text of a series of nodes with a
       # string with surrounding whitespace stripped
     end
 
-    doc.each('/my/xpath').as_int do |node|
+    doc.each('/my/xpath').as_int do |int|
       # int
     end
 
-    doc.each('/my/xpath').as_float do |node|
+    doc.each('/my/xpath').as_float do |float|
       # float
+    end
+
+    doc.each('/my/xpath').as_date do |date|
+      # date
     end
 
 ## Playing nicely with Nokogiri
