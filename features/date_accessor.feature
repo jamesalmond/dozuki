@@ -21,7 +21,7 @@ Feature: Getting dates from the document
 
   Scenario: getting the  of a single node with whitespace
     When I call "date('/root/next_event')" on the document
-    Then the result should be 12/01/2011
+    Then the result should be 12/01/2013
 
   Scenario: getting the int of a node that doesn't contain a date
     When I call "date('/root/name')" on the document
