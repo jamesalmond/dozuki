@@ -20,6 +20,10 @@ Feature: Iterating through nodes
             <price>53.50</price>
             <price>799.78</price>
           </prices>
+          <available>
+            <day>2011-05-03</day>
+            <day>2013-07-09</day>
+          </available>
         </root>
       """
 
@@ -42,3 +46,8 @@ Feature: Iterating through nodes
     When I call "each('/root/prices/price').as_float" on the document and collect the results
     Then the results should contain 53.50
     And the results should contain 799.78
+
+  Scenario: using each to traverse a document and getting the date elements
+    When I call "each('/root/available/day').as_date" on the document and collect the results
+    Then the results should contain 03/05/2011
+    And the results should contain 09/07/2013
