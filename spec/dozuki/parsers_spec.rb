@@ -101,5 +101,38 @@ module Dozuki
         end
       end
     end
+
+    describe Boolean do
+      let(:node) {mock :node, :text => string}
+      subject{ Boolean.parse(node)}
+      context "where string is 0" do
+        let(:string){"0"}
+        it{should be_false}
+        context "and there is whitespace" do
+          let(:string){"\n0"}
+          it{should be_false}
+        end
+      end
+      context "where string is 1" do
+        let(:string){"1"}
+        it{should be_true}
+        context "and there is whitespace" do
+          let(:string){"\n1"}
+          it{should be_true}
+        end
+      end
+      context "where string is true" do
+        let(:string){ "true" }
+        it {should be_true}
+        context "and there is whitespace" do
+          let(:string){"\ntrue"}
+          it{should be_true}
+        end
+      end
+      context "where string is false" do
+        let(:string){ "false"}
+        it{ should be_false }
+      end
+    end
   end
 end

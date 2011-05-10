@@ -35,5 +35,13 @@ module Dozuki
         end
       end
     end
+    module Boolean
+      def self.parse(node)
+        true_values.include? String.parse(node)
+      end
+      def self.true_values
+        ['1', 'true']
+      end
+    end
   end
 end
