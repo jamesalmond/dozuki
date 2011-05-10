@@ -11,18 +11,28 @@ module Dozuki
     end
 
     def as_string(&blk)
-      collection.each{|item| blk.call(Parsers::String.parse(item))}
+      each_as(Parsers::String, &blk)
     end
 
     def as_int(&blk)
-      collection.each{|item| blk.call(Parsers::Integer.parse(item))}
+      each_as(Parsers::Integer, &blk)
     end
 
     def as_float(&blk)
-      collection.each{|item| blk.call(Parsers::Float.parse(item))}
+      each_as(Parsers::Float, &blk)
     end
+
     def as_date(&blk)
-      collection.each{|item| blk.call(Parsers::Date.parse(item))}
+      each_as(Parsers::Date, &blk)
     end
+
+    def as_boolean(&blk)
+      each_as(Parsers::Boolean, &blk)
+    end
+
+    private
+      def each_as(parser, &blk)
+        collection.each{|item| blk.call(parser.parse(item))}
+      end
   end
 end

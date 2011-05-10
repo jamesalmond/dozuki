@@ -85,7 +85,7 @@ module Dozuki
         @block_called_with.should == a_float
       end
     end
-    
+
     describe "as_date" do
 
       let(:a_date){Date.civil(2012, 2,5)}
@@ -103,6 +103,25 @@ module Dozuki
       it "should call the block with the date" do
         subject
         @block_called_with.should == a_date
+      end
+    end
+    describe "as_boolean" do
+
+      let(:a_boolean){true}
+
+      before(:each) do
+        Dozuki::Parsers::Boolean.stub(:parse).and_return(a_boolean)
+      end
+
+      subject{node_collection.as_boolean{|arg| @block_called_with = arg}}
+
+      it "should parse the node to a boolean"  do
+        Dozuki::Parsers::Boolean.should_receive(:parse).with(collection_item).and_return(a_boolean)
+        subject
+      end
+      it "should call the block with the boolean" do
+        subject
+        @block_called_with.should == a_boolean
       end
     end
 
