@@ -32,7 +32,7 @@ Feature: Getting booleans from the document
     Then the result should be true
 
   Scenario: getting the boolean of a false single node with whitespace
-    When I call "boolean('/root/worth_visting')" on the document
+    When I call "boolean('/root/worth_visiting')" on the document
     Then the result should be false
 
   Scenario: getting a non-existent node
