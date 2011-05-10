@@ -24,6 +24,10 @@ Feature: Iterating through nodes
             <day>2011-05-03</day>
             <day>2013-07-09</day>
           </available>
+          <open>
+            <day>true</day>
+            <day>0</day>
+          </open>
         </root>
       """
 
@@ -51,3 +55,8 @@ Feature: Iterating through nodes
     When I call "each('/root/available/day').as_date" on the document and collect the results
     Then the results should contain 03/05/2011
     And the results should contain 09/07/2013
+
+  Scenario: using each to traverse a document and getting the boolean elements
+    When I call "each('/root/open/day').as_boolean" on the document and collect the results
+    Then the results should contain true
+    And the results should contain false
