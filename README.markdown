@@ -2,7 +2,7 @@
 
 A Nokogiri wrapper that simplifies commonly occurring tasks.
 
-[![Build Status](http://travis-ci.org/jamesalmond/dozuki.png)](http://travis-ci.org/JamesAlmond/dozuki)
+[![Build Status](http://travis-ci.org/jamesalmond/dozuki.png)](http://travis-ci.org/jamesalmond/dozuki)
 
 ## What does it do?
 
