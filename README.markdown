@@ -12,7 +12,7 @@ Dozuki removes the repetitive tasks from parsing XML documents with XPaths such 
 * accessing single nodes
 * checking whether an element exists
 * iterating through nodes
-* iterating nodes and extracting ints, floats and strings etc.
+* iterating nodes and extracting ints, floats, booleans and strings etc.
 
 It's mainly sugar for reducing the amount of chaining on calls like:
 
@@ -60,6 +60,7 @@ The following methods take the first node that matches the xpath and returns the
     doc.float('/my/xpath')
     doc.int('/my/xpath')
     doc.date('/my/xpath') # format yyyy-mm-dd
+    doc.boolean('/my/xpath') # format true/false or 1/0
 
 These functions are to replace calls using plain Nokogiri such as:
 
@@ -95,6 +96,10 @@ There are also simple ways to extract formatted text of a series of nodes with a
 
     doc.each('/my/xpath').as_date do |date|
       # date
+    end
+
+    doc.each('/my/xpath').as_boolean do |boolean|
+      # boolean
     end
 
 ## Playing nicely with Nokogiri
